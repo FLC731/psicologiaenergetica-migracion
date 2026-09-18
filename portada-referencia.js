@@ -1,4 +1,4 @@
-/* Accesos de la captura original. Las imágenes recuperadas del blog de Wix se reutilizan donde son pertinentes; otras son provisionales. No se altera el contenido largo. */
+/* Accesos de la captura original. Las imágenes recuperadas del blog de Wix se reutilizan donde son pertinentes; otras son provisionales. */
 (()=>{if(!document.body.classList.contains('home'))return;const help=document.querySelector('main > .home-help');if(!help)return;const base='https://static.wixstatic.com/media/';const items=[
 ['Formación y experiencia','Conóceme','sobre-mi.html','11062b_63ba1960ad6248f4878dfc4db488cb8e~mv2.jpg'],
 ['Resiliencia','EMDR','emdr.html','4bb169_00b2964298e14a4b99fe35a13031d6ef~mv2.gif'],
@@ -9,4 +9,6 @@
 ['Psicología energética','EFTL','psicoenergetica.html','4bb169_0b41c21efde945f5b877d5cc86fda278~mv2.jpg'],
 ['Vídeos y divulgación','BLOG','blog.html','4bb169_1489081838c4473b9d750e655e37120d~mv2.png']];
 const grid=document.createElement('section');grid.className='visual-access';grid.setAttribute('aria-label','Áreas y recursos de psicoterapia');for(const [title,action,path,image] of items){const a=document.createElement('a');a.className='visual-card';a.href=path;const img=document.createElement('img');img.src=base+image;img.alt='';img.loading='lazy';const name=document.createElement('strong');name.textContent=title;const pill=document.createElement('span');pill.className='visual-action';pill.textContent=action;a.append(img,name,pill);grid.append(a);}help.after(grid);const feature=document.createElement('a');feature.className='visual-feature';feature.href='talleres.html';feature.innerHTML='<strong>La Paz<br>2025</strong><span>Infancia, Trauma y Ecos del Alma</span>';grid.after(feature);
+/* El propietario ha pedido retirar únicamente el título y los textos introductorios de servicios de la portada. Se mantienen las secciones posteriores. */
+const services=document.getElementById('servicios');if(services){const intro=Array.from(services.children).slice(0,5);if(intro.length===5&&intro[0].tagName==='H2'&&intro[0].textContent.trim()==='Servicios Psicoterapeúticos y Formativos'&&intro[4].classList.contains('home-welcome'))intro.forEach(node=>node.remove());}
 })();
