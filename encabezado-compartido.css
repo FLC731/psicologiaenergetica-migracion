@@ -8,6 +8,7 @@ body .site-hero .hero-inner{box-sizing:border-box;position:relative;flex:0 1 aut
 body .site-hero .hero-inner:before{content:none!important}
 body .site-hero h1{max-width:none!important;margin:0 auto 12px!important;font:600 clamp(17px,2vw,23px)/1.25 Arial,sans-serif!important;letter-spacing:0!important;text-align:center!important}
 body .site-hero .hero-inner>p:not(.hero-note){max-width:none!important;margin:0 auto 12px!important;font:400 clamp(16px,1.65vw,22px)/1.3 Arial,sans-serif!important;color:#527281!important;text-align:center!important}
+body .site-hero .hero-second-line{font-size:.86em!important;line-height:1.35!important}
 body .site-hero .button{margin:0 0 7px!important;padding:6px 18px!important;font-size:12px!important}
 body .site-hero .hero-note{max-width:650px!important;margin:0 auto!important;padding:6px 10px!important;font-size:11px!important;line-height:1.3!important}
 body .header.site-navigation{position:relative;display:flex;justify-content:center;align-items:center;max-width:none;width:100%;min-height:43px;padding:0 20px;background:rgba(255,255,255,.96);border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8}
