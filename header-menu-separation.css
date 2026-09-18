@@ -1,8 +1,8 @@
-/* Portada: el encabezado de presentación precede al menú, como en la referencia. */
+/* Portada: encabezado de presentación independiente y anterior al menú. */
 .home .hero{position:relative;min-height:190px;display:flex;align-items:flex-start;overflow:visible}
-.home .hero .brand{position:absolute;top:18px;left:clamp(18px,2.5vw,48px);z-index:2;display:block;width:120px;max-width:20%;font:700 14px/1.2 Arial,sans-serif;color:#527281;text-decoration:none;white-space:normal}
-.home .hero .brand:before{content:'✺';display:block;font:48px/1 Arial,sans-serif;color:#7cc3cf}
-.home .hero .brand:after{content:'Integral';display:block;font:700 12px/1.1 Georgia,serif;color:#c46e32;letter-spacing:0}
+.home .hero .brand{position:absolute;top:18px;left:clamp(18px,2.5vw,48px);z-index:2;display:block;width:180px;max-width:30%;font:700 21px/1.2 Arial,sans-serif;color:#527281;text-decoration:none;white-space:normal}
+.home .hero .brand:before{content:'✺';display:block;font:72px/1 Arial,sans-serif;color:#7cc3cf}
+.home .hero .brand:after{content:none}
 .home .hero-inner{padding:12px 22px 14px;width:min(100%,660px)}
 .home .hero h1{margin-bottom:8px}
 .home .hero .hero-note{margin-bottom:0}
@@ -11,4 +11,4 @@
 .home .header nav a{padding:11px 0}
 .home .header .brand{display:none}
 @media(max-width:1050px){.home .header{justify-content:flex-end;padding:6px 18px}.home .header .menu{display:block;margin-left:auto}.home .header nav{display:none;flex-basis:100%;flex-direction:column;align-items:stretch;gap:0}.home .header nav.open{display:flex}.home .header nav a{padding:10px 5px}}
-@media(max-width:620px){.home .hero{min-height:0}.home .hero .brand{top:10px;left:12px;font-size:10px;max-width:72px}.home .hero .brand:before{font-size:29px}.home .hero .brand:after{font-size:9px}.home .hero-inner{padding:20px 15px 20px 90px}.home .hero h1{font-size:17px}.home .hero p{font-size:11px}.home .hero .hero-note{font-size:9px!important;padding:8px}.home .hero .button{font-size:10px;letter-spacing:0}}
+@media(max-width:620px){.home .hero{min-height:0}.home .hero .brand{top:10px;left:12px;font-size:15px;max-width:108px;width:108px}.home .hero .brand:before{font-size:43.5px}.home .hero .brand:after{content:none}.home .hero-inner{padding:20px 15px 20px 130px}.home .hero h1{font-size:17px}.home .hero p{font-size:11px}.home .hero .hero-note{font-size:9px!important;padding:8px}.home .hero .button{font-size:10px;letter-spacing:0}}
