@@ -4,7 +4,7 @@
 ['Resiliencia','EMDR','emdr.html','4bb169_00b2964298e14a4b99fe35a13031d6ef~mv2.gif'],
 ['Cómo sanar con la T. de Regresión','T. Regresión','trauma.html','4bb169_9b9c110d3a004936b54c1c9271bf1b74~mv2.jpg'],
 ['Desarrollo personal y Mindfulness','Logoterapia','bienvenida.html','4bb169_b8e2edb1f2054e18ac09a72fc00c91a3~mv2.jpg'],
-['Implicaciones clínicas','Mindfulness','sobre-mi.html','11062b_c458d664d562468295efd282b139d3c3~mv2.jpeg'],
+['Implicaciones clínicas','Mindfulness',null,'11062b_c458d664d562468295efd282b139d3c3~mv2.jpeg'],
 ['Preguntas sobre la Terapia. FAQs','FAQs','servicios.html','4bb169_7b2ce39cbea64441a5779c9744cad3a0~mv2.jpeg'],
 ['Psicología energética','EFTL','psicoenergetica.html','4bb169_0b41c21efde945f5b877d5cc86fda278~mv2.jpg'],
 ['Vídeos y divulgación','BLOG','blog.html','4bb169_1489081838c4473b9d750e655e37120d~mv2.png']];
