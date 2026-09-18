@@ -20,7 +20,28 @@ if(!home){
   const typography=document.createElement('link');typography.rel='stylesheet';typography.href=new URL('interiores-tipografia.css',root).href;document.head.append(typography);
 }else{document.querySelector('.hero')?.classList.add('site-hero');document.querySelector('.header')?.classList.add('site-navigation');const intro=document.querySelector('.site-hero .hero-inner>p:not(.hero-note)');if(intro){const br=intro.querySelector('br');if(br&&br.nextSibling&&!intro.querySelector('.hero-second-line')){const second=document.createElement('span');second.className='hero-second-line';while(br.nextSibling)second.append(br.nextSibling);intro.append(second);}}const visual=document.createElement('script');visual.src=new URL('portada-referencia.js',root).href;document.body.append(visual);}
 const navigation=document.getElementById('navigation');
-const links=[['Inicio','index.html'],['Bienvenida','bienvenida.html'],['Servicios','servicios.html'],['Terapia individual','terapia-individual.html'],['Terapia familiar','terapia-familiar.html'],['Psicología energética','psicoenergetica.html'],['Trauma','trauma.html'],['EMDR','emdr.html'],['Recursos terapéuticos','recursos.html'],['Talleres','talleres.html'],['Sobre mí','sobre-mi.html'],['Blog','blog.html'],['Contacto','contacto.html']];
-if(navigation){navigation.replaceChildren(...links.map(([label,path])=>{const a=document.createElement('a');a.href=new URL(path,root).href;a.textContent=label;if(new URL(a.href).pathname===location.pathname)a.setAttribute('aria-current','page');return a;}));}
+const links=[['Inicio','index.html'],['Bienvenida','bienvenida.html'],['Servicios','servicios.html'],['Terapia individual','terapia-individual.html'],['Terapia familiar','terapia-familiar.html'],['Psicología energética','psicoenergetica.html'],['Trauma','trauma.html'],['EMDR','emdr.html'],['Recursos terapéuticos','recursos.html'],['Talleres','talleres.html'],['Formación y experiencia',null],['Blog','blog.html'],['Contacto','contacto.html']];
+const closeMobileMenu=()=>{const menu=document.querySelector('.header .menu');if(menu)menu.setAttribute('aria-expanded','false');navigation?.classList.remove('open');};
+async function openTrainingModal(){
+  closeMobileMenu();
+  let dialog=document.getElementById('shared-training-dialog');
+  if(!dialog){
+    const response=await fetch(new URL('sobre-mi.html',root));
+    if(!response.ok)throw new Error('No se ha podido cargar la formación');
+    const documentSource=new DOMParser().parseFromString(await response.text(),'text/html');
+    const original=documentSource.getElementById('training-dialog');
+    if(!original)throw new Error('No se ha encontrado la ventana de formación');
+    const style=documentSource.querySelector('style');if(style)document.head.append(style.cloneNode(true));
+    dialog=original.cloneNode(true);dialog.id='shared-training-dialog';
+    dialog.querySelectorAll('[id]').forEach(element=>{if(element.id!=='shared-training-dialog')element.removeAttribute('id');});
+    const heading=dialog.querySelector('h2');if(heading){heading.id='shared-training-title';dialog.setAttribute('aria-labelledby',heading.id);}
+    const credential=[...dialog.querySelectorAll('li')].find(li=>li.textContent.trim()==='Psicólogo Clínico');if(credential)credential.textContent='Psicólogo';
+    const close=dialog.querySelector('.training-close');if(close)close.addEventListener('click',()=>dialog.close());
+    dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
+    document.body.append(dialog);
+  }
+  dialog.showModal();
+}
+if(navigation){navigation.replaceChildren(...links.map(([label,path])=>{if(!path){const button=document.createElement('button');button.type='button';button.textContent=label;button.setAttribute('aria-haspopup','dialog');button.style.cssText='background:none;border:0;padding:11px 0;color:inherit;font:inherit;cursor:pointer';button.addEventListener('click',()=>openTrainingModal().catch(error=>{console.error(error);alert('No se ha podido abrir la formación. Inténtalo de nuevo.');}));return button;}const a=document.createElement('a');a.href=new URL(path,root).href;a.textContent=label;if(new URL(a.href).pathname===location.pathname)a.setAttribute('aria-current','page');return a;}));}
 const menu=document.querySelector('.header .menu');
-if(menu&&navigation){menu.addEventListener('click',()=>{const expanded=menu.getAttribute('aria-expanded')==='true';menu.setAttribute('aria-expanded',String(!expanded));navigation.classList.toggle('open',!expanded);});navigation.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{menu.setAttribute('aria-expanded','false');navigation.classList.remove('open');}));}
+if(menu&&navigation){menu.addEventListener('click',()=>{const expanded=menu.getAttribute('aria-expanded')==='true';menu.setAttribute('aria-expanded',String(!expanded));navigation.classList.toggle('open',!expanded);});navigation.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMobileMenu));}
