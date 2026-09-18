@@ -1,0 +1,19 @@
+/* Solo páginas interiores: la portada, el menú y el pie de página no se modifican. */
+body:not(.home) :is(main .page,main .interior,main .reader,main .section){font-size:32px;line-height:1.65}
+body:not(.home) main :is(.page,.interior,.reader,.section) :is(p,li,dd,dt,blockquote){font-size:inherit;line-height:inherit}
+body:not(.home) main .page-intro{font-size:38px;line-height:1.5}
+body:not(.home) main .reader .copy{font-size:34px;line-height:1.75}
+body:not(.home) main .reader .copy :is(p,li,blockquote){font-size:inherit}
+/* Titulares al 50 % de los tamaños originales de styles.css. */
+body:not(.home) main .hero h1{font-size:clamp(18.5px,2.5vw,32.5px);line-height:1.3}
+body:not(.home) main :is(.page-title,.section h2){font-size:clamp(15.5px,2vw,24px);line-height:1.35}
+body:not(.home) main .section h3{font-size:13.5px;line-height:1.4}
+body:not(.home) main .reader h1{font-size:clamp(16px,2.5vw,26px);line-height:1.3}
+body:not(.home) main .interior h1{font-size:clamp(17.5px,2.5vw,29px);line-height:1.3}
+body:not(.home) main .interior h2{font-size:clamp(13px,1.5vw,17px);line-height:1.4}
+body:not(.home) main :is(.page,.reader,.interior,.section) h3{font-size:13.5px;line-height:1.4}
+body:not(.home) main :is(.page,.reader,.interior,.section) h4{font-size:12px;line-height:1.4}
+body:not(.home) main .blog-card h2{font-size:clamp(15.5px,2vw,24px)}
+body:not(.home) main .interior .source{font-size:26px}
+/* Contenido legible en pantallas estrechas, sin alterar la portada. */
+@media(max-width:620px){body:not(.home) :is(main .page,main .interior,main .reader,main .section){font-size:clamp(22px,5vw,32px)}body:not(.home) main .reader .copy{font-size:clamp(22px,5vw,34px)}body:not(.home) main .page-intro{font-size:clamp(24px,6vw,38px)}body:not(.home) main .hero h1{font-size:clamp(17px,4.5vw,23px)}}
