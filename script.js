@@ -1,4 +1,4 @@
-// Cabecera y navegación compartidas para todas las páginas, sin alterar su contenido.
+// Cabecera y navegación compartidas.
 const home=document.body.classList.contains('home');
 const script=document.querySelector('script[src*="script.js"]');
 const root=new URL('.',script?.src||new URL('script.js',document.baseURI).href);
@@ -20,7 +20,7 @@ if(!home){
   const typography=document.createElement('link');typography.rel='stylesheet';typography.href=new URL('interiores-tipografia.css',root).href;document.head.append(typography);
 }else{document.querySelector('.hero')?.classList.add('site-hero');document.querySelector('.header')?.classList.add('site-navigation');const intro=document.querySelector('.site-hero .hero-inner>p:not(.hero-note)');if(intro){const br=intro.querySelector('br');if(br&&br.nextSibling&&!intro.querySelector('.hero-second-line')){const second=document.createElement('span');second.className='hero-second-line';while(br.nextSibling)second.append(br.nextSibling);intro.append(second);}}const visual=document.createElement('script');visual.src=new URL('portada-referencia.js',root).href;document.body.append(visual);}
 const navigation=document.getElementById('navigation');
-const links=[['Inicio','index.html'],['Bienvenida','bienvenida.html'],['Servicios','servicios.html'],['Terapia individual','terapia-individual.html'],['Terapia familiar','terapia-familiar.html'],['Psicología energética','psicoenergetica.html'],['Trauma','trauma.html'],['EMDR','emdr.html'],['Recursos terapéuticos','recursos.html'],['Talleres','talleres.html'],['Blog','blog.html'],['Contacto','contacto.html']];
+const links=[['Inicio','index.html'],['Bienvenida','bienvenida.html'],['Servicios','servicios.html'],['Terapia individual','terapia-individual.html'],['Formación y experiencia',null],['Psicología energética','psicoenergetica.html'],['Trauma','trauma.html'],['EMDR','emdr.html'],['Recursos terapéuticos','recursos.html'],['Talleres','talleres.html'],['Blog','blog.html'],['Contacto','contacto.html']];
 const closeMobileMenu=()=>{const menu=document.querySelector('.header .menu');if(menu)menu.setAttribute('aria-expanded','false');navigation?.classList.remove('open');};
 async function openTrainingModal(){
   closeMobileMenu();
@@ -35,14 +35,14 @@ async function openTrainingModal(){
     dialog=original.cloneNode(true);dialog.id='shared-training-dialog';
     dialog.querySelectorAll('[id]').forEach(element=>{if(element.id!=='shared-training-dialog')element.removeAttribute('id');});
     const heading=dialog.querySelector('h2');if(heading){heading.id='shared-training-title';dialog.setAttribute('aria-labelledby',heading.id);}
-    const credential=[...dialog.querySelectorAll('li')].find(li=>li.textContent.trim()==='Psicólogo Clínico');if(credential)credential.textContent='Psicólogo';
+    const credential=[...dialog.querySelectorAll('li')].find(li=>li.textContent.trim()==='Psicólogo Clínico');if(credential)credential.textContent='Licenciado en Psicología';
     const close=dialog.querySelector('.training-close');if(close)close.addEventListener('click',()=>dialog.close());
     dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
     document.body.append(dialog);
   }
   dialog.showModal();
 }
-if(navigation){navigation.replaceChildren(...links.map(([label,path])=>{const a=document.createElement('a');a.href=new URL(path,root).href;a.textContent=label;if(new URL(a.href).pathname===location.pathname)a.setAttribute('aria-current','page');return a;}));}
+if(navigation){navigation.replaceChildren(...links.map(([label,path])=>{if(!path){const button=document.createElement('button');button.type='button';button.textContent=label;button.setAttribute('aria-haspopup','dialog');button.addEventListener('click',()=>openTrainingModal().catch(error=>{console.error(error);alert('No se ha podido abrir la formación. Inténtalo de nuevo.');}));return button;}const a=document.createElement('a');a.href=new URL(path,root).href;a.textContent=label;if(new URL(a.href).pathname===location.pathname)a.setAttribute('aria-current','page');return a;}));}
 if(location.pathname.endsWith('/contacto.html')){
   const main=document.querySelector('main.page');const intro=main?.querySelector('.page-intro');
   if(main){const button=document.createElement('button');button.type='button';button.textContent='Formación y experiencia →';button.setAttribute('aria-haspopup','dialog');button.style.cssText='display:inline-block;border:0;border-radius:6px;background:#527281;color:#fff;padding:13px 20px;font:inherit;cursor:pointer;margin:12px 0';button.addEventListener('click',()=>openTrainingModal().catch(error=>{console.error(error);alert('No se ha podido abrir la formación. Inténtalo de nuevo.');}));if(intro)intro.after(button);else main.prepend(button);}
