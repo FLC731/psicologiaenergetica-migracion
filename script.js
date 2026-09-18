@@ -2,7 +2,7 @@
 const home=document.body.classList.contains('home');
 const script=document.querySelector('script[src*="script.js"]');
 const root=new URL('.',script?.src||new URL('script.js',document.baseURI).href);
-const sharedStyle=document.createElement('link');sharedStyle.rel='stylesheet';sharedStyle.href=new URL('encabezado-compartido.css?v=96aefa5c',root).href;document.head.append(sharedStyle);
+const sharedStyle=document.createElement('link');sharedStyle.rel='stylesheet';sharedStyle.href=new URL('encabezado-compartido.css?v=7e2011d6',root).href;document.head.append(sharedStyle);
 if(!home){
   const oldHeader=document.querySelector('body > header.header, body > .header');
   const hero=document.createElement('header');hero.className='hero site-hero';hero.id='inicio';
